@@ -1,11 +1,9 @@
 /*Main*/
 
-
-body{
+body {
   background-color: white;
   text-align: center;
 }
-
 
 header {
   width: 100%;
@@ -13,7 +11,6 @@ header {
   z-index: 100;
   top: 0;
   background-color: white;
-
 }
 
 #search_box {
@@ -25,7 +22,7 @@ header {
 }
 
 .container {
-  position:relative;
+  position: relative;
   top: 110px;
   margin: 0 auto;
   width: 980px;
@@ -33,44 +30,18 @@ header {
 
 .photo {
   float: left;
-
   margin-right: 60px;
   margin-bottom: 50px;
-
 }
 
-.photo:nth-child(4n+0) {
+.photo:nth-child(4n + 0) {
   margin-right: 0;
 }
 
-.clearfix:after { 
-   content: "."; 
-   visibility: hidden; 
-   display: block; 
-   height: 0; 
-   clear: both;
-}
-
-/* Lightbox Custom Changes */
-
-.lb-dataContainer {
-  padding-top: 25px;
-}
-
-.lb-dataContainer,
-.lb-data .lb-details {
-  width: 600px !important;
-}
-
-/*needed to overide inline styling from js */
-
-.lb-closeContainer {
-  display: none;
-}
-
-/* Filterizr Custom Changes */
-
-.filtr-item {
-  padding-right: 60px;
-  padding-bottom: 50px;
+.clearfix:after {
+  content: '.';
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
 }
