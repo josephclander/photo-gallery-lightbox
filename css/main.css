@@ -1,4 +1,8 @@
-/*Main*/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 
 body {
   background-color: white;
@@ -13,7 +17,7 @@ header {
   background-color: white;
 }
 
-#search_box {
+.search {
   margin: 30px 0;
   width: 460px;
   padding: 10px;
@@ -25,7 +29,7 @@ header {
   position: relative;
   top: 110px;
   margin: 0 auto;
-  width: 980px;
+  width: 980px; /* 200*4 + 3*60 = 980px */
 }
 
 .photo {
@@ -44,4 +48,50 @@ header {
   display: block;
   height: 0;
   clear: both;
+}
+
+/*******************************
+MEDIA QUERIES
+*******************************/
+
+@media screen and (max-width: 980px) {
+  .container {
+    width: 720px; /* 200*3 + 2*60 = 720px */
+  }
+
+  .photo:nth-child(4n + 0) {
+    margin-right: 60px;
+  }
+
+  .photo:nth-child(3n + 0) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .container {
+    width: 460px; /* 200*2 + 1*60 = 460px */
+  }
+
+  .photo:nth-child(3n + 0) {
+    margin-right: 60px;
+  }
+
+  .photo:nth-child(2n + 0) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .container {
+    width: 200px; /* 200*1 + 0*60 = 200px */
+  }
+
+  .photo {
+    margin-right: 60px;
+  }
+
+  .search {
+    width: 80%;
+  }
 }
