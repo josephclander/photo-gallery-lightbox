@@ -34,6 +34,6 @@ thumbnails.click(function (e) {
   $('#modal__image').html(input);
 });
 
-$('#modal').click(function () {
-  $(this).toggle();
+$('#close').click(function () {
+  $('#modal').toggle();
 });
