@@ -36,6 +36,7 @@ header {
   float: left;
   margin-right: 60px;
   margin-bottom: 50px;
+  transition: opacity 0.3s;
 }
 
 .photo:nth-child(4n + 0) {
