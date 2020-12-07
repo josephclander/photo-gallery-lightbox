@@ -5,6 +5,7 @@
 }
 
 body {
+  position: relative;
   background-color: white;
   text-align: center;
 }
@@ -49,6 +50,36 @@ header {
   display: block;
   height: 0;
   clear: both;
+}
+
+/*******************************
+Modal
+*******************************/
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 200;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(30, 30, 30, 0.9);
+}
+
+.modal__image {
+  width: 65%;
+  margin: 120px auto;
+}
+
+.modal__image img {
+  width: 100%;
+  display: block;
+}
+
+.modal__image p {
+  color: rgb(221, 221, 221);
+  margin-top: 50px;
+  max-width: 80%;
+  margin: 50px auto 0;
 }
 
 /*******************************

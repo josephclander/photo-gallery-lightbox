@@ -3,7 +3,7 @@ const searchbar = $('#search');
 
 const searchHandler = () => {
   const text = searchbar.val().toLowerCase();
-  // take list of photos
+
   thumbnails.each(function () {
     const alt = $(this)
       .children()
@@ -21,3 +21,19 @@ const searchHandler = () => {
 };
 
 searchbar.on('keyup', searchHandler);
+
+thumbnails.click(function (e) {
+  e.preventDefault();
+  $('.modal').toggle();
+
+  const path = $(this).children().first().attr('href');
+  const alt = $(this).children().first().children().first().attr('alt');
+  const caption = $(this).children().first().attr('data-title');
+  const input = `<img src="${path}" alt="${alt}" />
+  <p>${caption}</p>`;
+  $('#modal__image').html(input);
+});
+
+$('#modal').click(function () {
+  $(this).toggle();
+});
