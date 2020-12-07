@@ -43,14 +43,34 @@ header {
   margin-right: 0;
 }
 
-figcaption {
-  display: none;
-}
-
 .clearfix:after { 
    content: "."; 
    visibility: hidden; 
    display: block; 
    height: 0; 
    clear: both;
+}
+
+/* Lightbox Custom Changes */
+
+.lb-dataContainer {
+  padding-top: 25px;
+}
+
+.lb-dataContainer,
+.lb-data .lb-details {
+  width: 600px !important;
+}
+
+/*needed to overide inline styling from js */
+
+.lb-closeContainer {
+  display: none;
+}
+
+/* Filterizr Custom Changes */
+
+.filtr-item {
+  padding-right: 60px;
+  padding-bottom: 50px;
 }
