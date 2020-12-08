@@ -40,15 +40,10 @@ header {
 }
 
 .photo {
-  display: none;
+  display: block;
   margin-right: 60px;
   float: left;
   margin-bottom: 50px;
-  transition: opacity 0.3s;
-}
-
-.show {
-  display: block;
 }
 
 .photo a {

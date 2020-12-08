@@ -13,15 +13,10 @@ const searchHandler = () => {
       .first()
       .attr('alt')
       .toLowerCase();
-    // if (alt.match(text)) {
-    //   $(this).attr('style', 'opacity: 1');
-    // } else {
-    //   $(this).attr('style', 'opacity: 0');
-    // }
     if (alt.match(text)) {
-      $(this).addClass('show');
+      $(this).fadeIn();
     } else {
-      $(this).removeClass('show');
+      $(this).fadeOut();
     }
   });
 };
