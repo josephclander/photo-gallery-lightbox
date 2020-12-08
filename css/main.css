@@ -29,19 +29,36 @@ header {
 .container {
   position: relative;
   top: 110px;
-  margin: 0 auto;
-  width: 980px; /* 200*4 + 3*60 = 980px */
+  margin-top: 0;
+  /* These sort alignment issues as 
+  we can't target a count of elements showing with css */
+  margin-right: calc(((100% - 1040px) / 2) - 30px);
+  margin-left: calc(((100% - 1040px) / 2) + 30px);
+  /* 200*4 + 3*60 = 980px */
+  /* 980px + 60px margin we don't want = 1040px */
+  width: 1040px;
 }
 
 .photo {
-  float: left;
+  display: none;
   margin-right: 60px;
+  float: left;
   margin-bottom: 50px;
   transition: opacity 0.3s;
 }
 
-.photo:nth-child(4n + 0) {
-  margin-right: 0;
+.show {
+  display: block;
+}
+
+.photo a {
+  width: 100%;
+  height: 100%;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
 }
 
 .clearfix:after {
@@ -123,44 +140,59 @@ Modal
 MEDIA QUERIES
 *******************************/
 
-@media screen and (max-width: 980px) {
+/******************************* 
+  1040px + 60px = 1100px 
+  this is when the right 
+  margin will meet the edge
+  of the browser
+********************************/
+@media screen and (max-width: 1100px) {
   .container {
-    width: 720px; /* 200*3 + 2*60 = 720px */
-  }
-
-  .photo:nth-child(4n + 0) {
-    margin-right: 60px;
-  }
-
-  .photo:nth-child(3n + 0) {
-    margin-right: 0;
+    margin-right: calc(((100% - 780px) / 2) - 30px);
+    margin-left: calc(((100% - 780px) / 2) + 30px);
+    /* 200*3 + 2*60 = 720px */
+    /* 720px + 60px margin we don't want = 780px */
+    width: 780px;
   }
 }
 
-@media screen and (max-width: 720px) {
+/******************************* 
+  780px + 60px = 840px 
+  this is when the right 
+  margin will meet the edge
+  of the browser
+********************************/
+@media screen and (max-width: 840px) {
   .container {
-    width: 460px; /* 200*2 + 1*60 = 460px */
-  }
-
-  .photo:nth-child(3n + 0) {
-    margin-right: 60px;
-  }
-
-  .photo:nth-child(2n + 0) {
-    margin-right: 0;
+    margin-right: calc(((100% - 520px) / 2) - 30px);
+    margin-left: calc(((100% - 520px) / 2) + 30px);
+    /* 200*2 + 1*60 = 460px */
+    /* 460px + 60px margin we don't want = 520px */
+    width: 520px;
   }
 }
 
-@media screen and (max-width: 460px) {
+/******************************* 
+  520px + 60px = 580px 
+  this is when the right 
+  margin will meet the edge
+  of the browser
+********************************/
+@media screen and (max-width: 580px) {
   .container {
-    width: 200px; /* 200*1 + 0*60 = 200px */
-  }
-
-  .photo {
-    margin-right: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
   }
 
   .search {
     width: 80%;
+  }
+
+  .photo {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
   }
 }
