@@ -56,16 +56,30 @@ $('#close').click(function () {
   $('.arrow').css('color', '#fff');
 });
 
-$('#left_arrow').click(function () {
+function moveLeft() {
   if (currentImage > 0) {
     currentImage--;
     imageLoader();
   }
-});
+}
 
-$('#right_arrow').click(function () {
+function moveRight() {
   if (currentImage < thumbnails.length - 1) {
     currentImage++;
     imageLoader();
+  }
+}
+
+$('#left_arrow').click(moveLeft);
+$('#right_arrow').click(moveRight);
+
+$('html').keyup(function (e) {
+  // left key code = 37
+  if (e.which === 37) {
+    moveLeft();
+  }
+  // right key code = 39
+  if (e.which === 39) {
+    moveRight();
   }
 });
