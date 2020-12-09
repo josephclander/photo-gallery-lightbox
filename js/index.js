@@ -4,6 +4,17 @@ let visibleArrayIndices = [];
 let currentIndex;
 
 /*************************
+ Helper
+*************************/
+
+function randomTime() {
+  // e.g. 0.000 to 0.999 * 4 gives possible 0 to 3
+  // shift the resulting range up by 2
+  // to give a range of 2 to 5 inclusive
+  return 100 * Math.floor(Math.random() * (7 - 3 + 1) + 3);
+}
+
+/*************************
  Search
 *************************/
 
@@ -19,12 +30,14 @@ const searchHandler = () => {
       .attr('alt')
       .toLowerCase();
     if (alt.match(text)) {
-      $(this).fadeIn();
+      $(this).fadeIn(randomTime());
     } else {
-      $(this).fadeOut();
+      $(this).fadeOut(randomTime());
     }
   });
 };
+
+// fadeIn & fadeOut create animation
 
 searchbar.on('keyup', searchHandler);
 
