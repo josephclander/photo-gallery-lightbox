@@ -1,6 +1,7 @@
 const thumbnails = $('.photo');
 const searchbar = $('#search');
-let currentImage;
+let visibleArrayIndices = [];
+let currentIndex;
 
 /*************************
  Search
@@ -31,45 +32,69 @@ searchbar.on('keyup', searchHandler);
  Modal
 *************************/
 
-const imageLoader = () => {
-  $('#modal').css('display', 'block');
-  $('.modal__image').css('opacity', 0);
-  $('.modal__image')[currentImage].style.opacity = 1;
+function loadModal(currentImage) {
+  // array of thumbnails that are NOT 'display:none'
+  $('.photo')
+    .not('.photo:hidden')
+    .each(function () {
+      let index = $('.photo').index($(this));
+      visibleArrayIndices.push(index);
+    });
 
-  if (currentImage === 0) {
+  currentIndex = visibleArrayIndices.indexOf(currentImage);
+  $('#modal').css('display', 'block');
+  imageLoader();
+}
+
+function imageLoader() {
+  $('.modal__image').css('opacity', 0);
+  arrowStyling();
+  let imageIndexToShow = visibleArrayIndices[currentIndex];
+  $('.modal__image')[imageIndexToShow].style.opacity = 1;
+}
+
+function arrowStyling() {
+  // Arrow conditional styling
+  if (currentIndex === 0) {
     $('#left_arrow').css('color', 'rgb(30,30,30)');
-  } else if (currentImage === thumbnails.length - 1) {
+  } else if (currentIndex === visibleArrayIndices.length - 1) {
     $('#right_arrow').css('color', 'rgb(30,30,30)');
   } else {
     $('.arrow').css('color', '#fff');
   }
-};
+}
 
+// thumnail click listener
+// send index from full list
+// and load images
 thumbnails.click(function (e) {
   e.preventDefault();
-  currentImage = $(this).index();
-  imageLoader();
+  let currentImage = $(this).index();
+  loadModal(currentImage);
 });
 
+// Close button and reset
 $('#close').click(function () {
   $('#modal').css('display', 'none');
   $('.arrow').css('color', '#fff');
+  visibleArrayIndices = [];
 });
 
 function moveLeft() {
-  if (currentImage > 0) {
-    currentImage--;
+  if (currentIndex > 0) {
+    currentIndex--;
     imageLoader();
   }
 }
 
 function moveRight() {
-  if (currentImage < thumbnails.length - 1) {
-    currentImage++;
+  if (currentIndex < visibleArrayIndices.length - 1) {
+    currentIndex++;
     imageLoader();
   }
 }
 
+// Modal gallery listeners
 $('#left_arrow').click(moveLeft);
 $('#right_arrow').click(moveRight);
 
