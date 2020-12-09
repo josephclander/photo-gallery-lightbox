@@ -126,11 +126,17 @@ Modal
   position: absolute;
   opacity: 0;
   transition: 0.3s opacity ease-in-out;
+  pointer-events: none;
 }
 
 .modal__image img {
   width: 100%;
   display: block;
+}
+
+.modal__image iframe {
+  width: 980px;
+  height: 613px;
 }
 
 .modal__caption {
@@ -151,7 +157,8 @@ MEDIA QUERIES
   of the browser
 ********************************/
 @media screen and (max-width: 1100px) {
-  .modal__container {
+  .modal__container,
+  .modal__image iframe {
     width: 720px;
     height: 450px;
   }
@@ -172,7 +179,8 @@ MEDIA QUERIES
   of the browser
 ********************************/
 @media screen and (max-width: 840px) {
-  .modal__container {
+  .modal__container,
+  .modal__image iframe {
     width: 420px;
     height: 263px;
   }
@@ -193,7 +201,8 @@ MEDIA QUERIES
   of the browser
 ********************************/
 @media screen and (max-width: 580px) {
-  .modal__container {
+  .modal__container,
+  .modal__image iframe {
     width: 240px;
     height: 150px;
   }

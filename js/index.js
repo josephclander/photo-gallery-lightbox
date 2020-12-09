@@ -60,10 +60,11 @@ function loadModal(currentImage) {
 }
 
 function imageLoader() {
-  $('.modal__image').css('opacity', 0);
+  $('.modal__image').css('opacity', 0).css('pointer-events', 'none');
   arrowStyling();
   let imageIndexToShow = visibleArrayIndices[currentIndex];
   $('.modal__image')[imageIndexToShow].style.opacity = 1;
+  $('.modal__image')[imageIndexToShow].style.pointerEvents = 'all';
 }
 
 function arrowStyling() {
