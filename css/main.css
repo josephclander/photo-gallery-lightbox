@@ -1,76 +1,239 @@
-/*Main*/
-
-
-body{
-  background-color: white;
-  text-align: center;
+:root {
+  --white: #fff;
+  --black: #000;
+  --text: #404040;
+  --grey: #c4c4c4;
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  background-color: var(--white);
+  text-align: center;
+}
 
 header {
   width: 100%;
   position: fixed;
   z-index: 100;
   top: 0;
-  background-color: white;
-
+  background-color: var(--white);
 }
 
-#search_box {
+.search {
   margin: 30px 0;
   width: 460px;
   padding: 10px;
-  color: grey;
+  border: 2px solid var(--grey);
+  border-radius: 5px;
+  color: var(--text);
   font-size: 16pt;
 }
 
+.search::placeholder {
+  color: var(--grey);
+}
+
 .container {
-  position:relative;
+  position: relative;
   top: 110px;
-  margin: 0 auto;
-  width: 980px;
+  margin-top: 0;
+  /* These sort alignment issues as 
+  we can't target a count of elements showing with css */
+  margin-right: calc(((100% - 1040px) / 2) - 30px);
+  margin-left: calc(((100% - 1040px) / 2) + 30px);
+  /* 200*4 + 3*60 = 980px */
+  /* 980px + 60px margin we don't want = 1040px */
+  width: 1040px;
 }
 
 .photo {
-  float: left;
-
+  display: block;
   margin-right: 60px;
+  float: left;
   margin-bottom: 50px;
-
 }
 
-.photo:nth-child(4n+0) {
-  margin-right: 0;
+.photo a {
+  width: 100%;
+  height: 100%;
 }
 
-.clearfix:after { 
-   content: "."; 
-   visibility: hidden; 
-   display: block; 
-   height: 0; 
-   clear: both;
+.photo img {
+  display: block;
+  width: 100%;
 }
 
-/* Lightbox Custom Changes */
-
-.lb-dataContainer {
-  padding-top: 25px;
+.clearfix:after {
+  content: '.';
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
 }
 
-.lb-dataContainer,
-.lb-data .lb-details {
-  width: 600px !important;
-}
+/*******************************
+Modal
+*******************************/
 
-/*needed to overide inline styling from js */
-
-.lb-closeContainer {
+.modal {
   display: none;
+  position: fixed;
+  z-index: 200;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(30, 30, 30, 0.9);
 }
 
-/* Filterizr Custom Changes */
+.modal__container {
+  position: relative;
+  width: 980px;
+  height: 613px;
+  margin: 120px auto 30px;
+}
 
-.filtr-item {
-  padding-right: 60px;
-  padding-bottom: 50px;
+.close {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 25px;
+  height: 25px;
+  background-color: var(--black);
+  border: 1px solid var(--white);
+  border-radius: 50%;
+  color: #fff;
+  line-height: 1.3;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow {
+  position: absolute;
+  color: var(--white);
+  font-size: 50px;
+  padding: 10px 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.left_arrow {
+  left: -60px;
+}
+
+.right_arrow {
+  right: -60px;
+}
+
+.modal__image-container {
+  width: 100%;
+  position: relative;
+}
+
+.modal__image {
+  position: absolute;
+  opacity: 0;
+  transition: 0.3s opacity ease-in-out;
+  pointer-events: none;
+}
+
+.modal__image img {
+  width: 100%;
+  display: block;
+}
+
+.modal__image iframe {
+  width: 980px;
+  height: 613px;
+}
+
+.modal__caption {
+  color: var(--grey);
+  max-width: 50%;
+  padding-top: 20px;
+  margin: 0 auto;
+}
+
+/*******************************
+MEDIA QUERIES
+*******************************/
+
+/******************************* 
+  1040px + 60px = 1100px 
+  this is when the right 
+  margin will meet the edge
+  of the browser
+********************************/
+@media screen and (max-width: 1100px) {
+  .modal__container,
+  .modal__image iframe {
+    width: 720px;
+    height: 450px;
+  }
+
+  .container {
+    margin-right: calc(((100% - 780px) / 2) - 30px);
+    margin-left: calc(((100% - 780px) / 2) + 30px);
+    /* 200*3 + 2*60 = 720px */
+    /* 720px + 60px margin we don't want = 780px */
+    width: 780px;
+  }
+}
+
+/******************************* 
+  780px + 60px = 840px 
+  this is when the right 
+  margin will meet the edge
+  of the browser
+********************************/
+@media screen and (max-width: 840px) {
+  .modal__container,
+  .modal__image iframe {
+    width: 420px;
+    height: 263px;
+  }
+
+  .container {
+    margin-right: calc(((100% - 520px) / 2) - 30px);
+    margin-left: calc(((100% - 520px) / 2) + 30px);
+    /* 200*2 + 1*60 = 460px */
+    /* 460px + 60px margin we don't want = 520px */
+    width: 520px;
+  }
+}
+
+/******************************* 
+  520px + 60px = 580px 
+  this is when the right 
+  margin will meet the edge
+  of the browser
+********************************/
+@media screen and (max-width: 580px) {
+  .modal__container,
+  .modal__image iframe {
+    width: 240px;
+    height: 150px;
+  }
+
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+
+  .search {
+    width: 80%;
+  }
+
+  .photo {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+  }
 }

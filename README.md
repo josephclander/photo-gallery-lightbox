@@ -52,3 +52,23 @@ At the top of the page you'll have a search area where photos will hide and show
 4. Write your own JavaScript or jQuery code instead of using a jQuery plugin.
 
 5. Add animation effects when filtering the gallery of photos.
+
+# Notes from the build
+
+Tested on Firefox 84.0b8, Chrome 87 and Safari 14.01 with no notable issues.
+
+## Principles
+
+I returned to this project after some years had passed. Tools like Flexbox, Grid and ES6 JS Syntax are more widely used now. However, the project was built initially without these. Instead it used jQuery and plugins. When I opened it the plugins were now broken but the basic markup and styling was still there. I decided that as I now start new projects with these newer technologies, I would place a restriction on this one to rebuild it without using them. This gave me a chance to see if I could 'fix' legacy code.
+
+## Key issues and chosen solutions
+
+- As the plugins were broken and did not seem to allow enough customisation to meet the modal design brief, I removed them.
+
+- I added Media Queries for the thumbnails so that a right margin was added or removed on the correct one to keep the page aligned. When I came to add the search facility, elements disappear, I realised I couldn't select the rightmost elements with just CSS (even if they were set to 'display: none') as they were still present in the DOM. Media Queries now have calculations based on the width of the screen with slight adjustments for a 60px margin.
+
+- On the modal page, initial code only created elements to show if they were called upon. This had the adverse effect that the arrow elements would 'flash' to the top of the page as the image element would be absent for a hundredth of a second. I placed all items in the DOM and hid them with opacity for smoother transitions.
+
+- On the modal set up elements are now only hidden with opacity. When adding a YouTube iframe, you couldn't access the controls as the other elements were above it, just invisible. To keep the smooth transitions, the CSS property 'pointer-events' was used.
+
+- The search function selects thumbnails to remove and a connection was needed to bind that result with the images to show in the modal view. Initial thoughts were to create an array of objects containing the details (present in the source folder) and filter what should be rendered to the page. This presented two problems: ES6 import modules were not available under my own brief and I was reluctant to add such a large document together in one JS file, the second is that the thought process was going to use ES6 filter method which again I was looking to avoid.
