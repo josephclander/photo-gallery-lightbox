@@ -150,6 +150,7 @@ Modal
 .modal__image iframe {
   width: 980px;
   height: 613px;
+  border: 0;
 }
 
 .modal__caption {
