@@ -1,12 +1,14 @@
 # Treehouse Photo Gallery
 
-# Project Overview
+## Project Overview
 
-In this project, you will create an interactive photo gallery using JavaScript and jQuery. Thumbnails and photos will be provided with descriptions.
+An interactive photo gallery using JavaScript and jQuery. When the user clicks on a thumbnail the photo will display in a lightbox. There should be a back and previous buttons to cycle through photos.
 
-At the top of the page you'll have a search area where photos will hide and show depending on user input. When the user clicks on a thumbnail the photo will display in a lightbox. There should be a back and previous buttons to cycle through photos.
+## Screenshots
 
-# Instructions
+<img width="300px" src="https://user-images.githubusercontent.com/19231569/214116476-026b9053-109b-462a-b904-8d35ff6f1395.png"> <img width="300px" src="https://user-images.githubusercontent.com/19231569/214116657-3311ee54-bf9a-40be-9e78-65b96388c04c.png"> <img width="300px" src="https://user-images.githubusercontent.com/19231569/214116669-338879dd-d850-4236-8960-3b7348f89533.png">
+
+## Client Instructions
 
 1. Create a web page using HTML and CSS. The page should have a title, a search box, and a place where a photo gallery will be placed.
 
@@ -39,7 +41,7 @@ At the top of the page you'll have a search area where photos will hide and show
    - JSHint may show you some warnings, so make sure to check through those for any potential problems.
    - You do not need to fix every warning listed but reviewing them can be useful.
 
-# Extra Credit
+## Extra Features
 
 1. Include a responsive design.
 
