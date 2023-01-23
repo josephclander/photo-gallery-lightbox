@@ -1,4 +1,4 @@
-# Treehouse Photo Gallery
+# Photo Gallery with Search & Lightbox
 
 ## Project Overview
 
